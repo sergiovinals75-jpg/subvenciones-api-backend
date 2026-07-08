@@ -9,8 +9,6 @@ COPY app ./app
 
 RUN mkdir -p /app/data/generados
 
-# Railway inyecta la variable PORT automáticamente
-ENV PORT=8000
-EXPOSE 8000
+EXPOSE 8080
 
-CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT}"]
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8080}"]
